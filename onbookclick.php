@@ -4,15 +4,15 @@ $school_id=$_SESSION['school_id'];
 ?>
 <form action="booking_resource.php"method="POST">
   <select name="resources">
-    <option value="playground">playground</option>
-    <option value="library">library</option>
-    <option value="activity_room">activity_room</option>
-    <option value="lab">lab</option>
-    <option value="equipment">equipment</option>
-    <option value="part_time_teachers">part_time_teachers</option>
+    <option value="playground_db">playground</option>
+    <option value="library_db">library</option>
+    <option value="activity_room_db">activity_room</option>
+    <option value="lab_db">lab</option>
+    <option value="equipment_db">equipment</option>
+    <option value="part_time_teachers_db">part_time_teachers</option>
   </select>
   <br><br>
-  <input type="date">date
+  <input type="date"name="date">date
   <input type="submit" name="submit">
 </form>
 <?php
@@ -25,7 +25,6 @@ $con = mysqli_connect("localhost","root","","loop_19");
 $cluster_id=mysqli_query($con,"select cluster_id from cluster where school_id='school_id'");
 $resource = array("playground_db","library_db","activity_room_db","lab_db","equipment_db","part_time_teachers_db");
 $date=date("2019-07-13");
-echo $date;
 for($i=0;$i<count($resource);$i++)
 {
 $sql="SELECT * FROM cluster inner join ".$resource[$i]." on cluster.school_id= ".$resource[$i].".school_id where date ='$date' and cluster_id=0;";
