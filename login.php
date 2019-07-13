@@ -1,24 +1,38 @@
+<html>
+	<head>
+		<title>Basic application</title>
+	</head>
+	<body>
+		<form method="POST">
+			Enter your user id:<input type="text" name="school_id" value="" ><br>
+			Enter your password<input type="password" name="password" value=""><br>
+			<input type="submit" name="submit">
+		</form>
+	</body>
+</html>
 <?php
-@mysql_connect('localhost','root','')or die('Could not connect to database');
-mysql_select_db('loop_19');
-$name=$_POST['uname'];
-$pass=$_POST['pass'];
-if(isset($_POST['submit']))
-{
-	$sql="select username,password from signup";
-$result1=mysql_query($sql);
-	 while($row1 = mysql_fetch_array($result1))
-	 {
-		 
-		if($name==$row1['username']&&$pass==$row1['password'])
+error_reporting(0);
+	$con = mysqli_connect("localhost","root","","loop_19");
+	if(!$con)
+	{
+		echo "not connected";
+	}
+	else
+	{
+	echo "connected..."."<br>";
+	}
+	$names=$_POST['school_id'];
+	$pass=$_POST['password'];
+	if(isset($_POST['submit']))
+	{
+		$result1=mysqli_query($con,"select * from login_schools where school_id='$names' and password='$pass';");
+		if(mysqli_num_rows($result1)>0)
 		{
-			echo "sucessfully loggedin";
-
+			Header('Location:hello.php');
 		}
-		else
-		{
-			echo "Incorrect Login Credentials";
-		}
-	 }
-}
+			else
+			{
+				echo "Incorrect Login Credentials";
+			}
+	}
 ?>
