@@ -1,0 +1,55 @@
+<?php
+$id=$_GET["school_id"];
+error_reporting(0);
+	$con = mysqli_connect("localhost","root","","feedback");
+	if(!$con)
+	{
+		echo "not connected";
+	}
+	else
+	{
+        ?>
+        <html>
+        <head>
+        <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+        </style>
+        </head>
+        <body>
+            <table>
+                <th>SCHOOL ID</th>
+                <th>NAME</th>
+                <th>FEEDBACK</th>
+                <?php
+                    $result1=mysqli_query($con,"select rated_school,feedback from feedback WHERE school_id=$id;");
+                    while ($row = mysqli_fetch_assoc($result1) )
+                    { 
+                        $i=$row["rated_school"];
+                    $result2=mysqli_query($con,"select school_name from cluster WHERE school_id=$i;");
+                    $school_name = mysqli_fetch_assoc($result2)
+                ?>
+                    <tr>
+                    <td><?php echo $row["rated_school"]?><a></td>
+                    <td><?php echo $school_name["school_name"]?><a></td>
+                    <td><?php echo $row["feedback"]?></td>
+                </tr>
+        </body>
+    </html>          
+    <?php           
+                    }
+    }       
+?>
