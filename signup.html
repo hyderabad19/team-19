@@ -1,5 +1,7 @@
 
 
+
+
 <html>
 	<head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -93,43 +95,49 @@ body {
     <h1 class="well">Registration Form</h1>
 	<div class="col-lg-12 well">
 	<div class="row">
-				<form>
+				<form action="signup.php" method="POST">
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								<label>School Name</label>
-								<input type="text" placeholder="Enter School Name Here.." class="form-control" name="school_name">
+								<input type="text" placeholder="Enter School Name Here.." class="form-control" name="school_name" required>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label>Password</label>
-								<input type="password" placeholder="Enter Password Here.." class="form-control" name="pass">
+								<input type="password" placeholder="Enter Password Here.." class="form-control" name="pass" required>
 							</div>
 						</div>					
 						<div class="form-group">
 							<label>Address</label>
-							<textarea placeholder="Enter Address Here.." rows="3" class="form-control" name="location"></textarea>
+							<textarea placeholder="Enter Address Here.." rows="3" class="form-control" name="location" required></textarea>
 						</div>	
 						
 												
 					<div class="form-group">
 						<label>Phone Number</label>
-						<input type="text" placeholder="Enter Phone Number Here.." class="form-control" name="phone_number">
+						<input type="text" placeholder="Enter Phone Number Here.." class="form-control" name="phone_number" required>
 					</div>
 					<div class="form-group">
 							<label> Alternate Phone Number</label>
-							<input type="text" placeholder="Enter Alternate Phone Number Here.." class="form-control" name="alternate_number">
+							<input type="text" placeholder="Enter Alternate Phone Number Here.." class="form-control" name="alternate_number" required>
 						</div>		
 						
 					<div class="form-group">
-						<label> Resources</label>
-						<input type="checkbox" name="playground" > Playground</div></input>
-						<input type="checkbox" name="library"> Library</div></input>
-						<input type="checkbox" name="activity_room"> Activity Room</div></input>
-						<input type="checkbox" name="lab"> Computer Lab </div></input>
-						<input type="checkbox" name="equipment">Equipment </div></input>
-						<input type="checkbox" name="part_time_teachers"> Part Time Teachers</div></input>
+						 <b>Resources</b>:<br>
+						 Playgrounds:<br>
+						 <input type="text" name="play" placeholder="Number of Playgrounds" required/>
+						 <br>
+						 Library:<br>
+						 <input type="text" name="lib" placeholder="Number of Libraries" required/>
+						 <br>
+						 Activity_room:<br>
+						 <input type="text" name="activity" placeholder="Number of Activity_rooms" required/>
+						 <br>
+						 Labs:<br>
+						 <input type="text" name="lab" placeholder="Number of Labs" required/>
+						 <br>
 					</div>
-					<button type="button" class="btn btn-lg btn-info">Submit</button>					
+					<button type="submit" class="btn btn-lg btn-info">Submit</button>					
 					</div>
 				</form> 
 				</div>
