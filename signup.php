@@ -1,41 +1,42 @@
 <?php
-$array = array(); 
-$GLOBALS['a'] = 0;
-mysql_connect('localhost','root','')or die('Could not connect to database');
-mysql_select_db('loop_19');
-$p1=$GLOBALS['a']+1;
-$p2=$_POST['schoolname'];
-$p3=$_POST['pass'];
-$p4=0;
-$p5=0;
-$p6=0;
-$p7=0;
-$p8=$_POST['phonenumber'];$i=4;
-$p9=$_POST['alternatenumber'];
-$p10=$_POST['address'];
-if(!empty($_POST['check_list'])){
-foreach($_POST['check_list'] as $selected){
-	if($selected=="playground")
-		$p4=1;
-	if($selected=="library")
-	$p5=1;
-	if($selected=="activity_room")
-		$p6=1;
-	if($selected=="lab")
-		$p7=1;
-
-}
+$con = mysqli_connect("localhost","root","","loop_19");
+if(!$con)
+{
+  echo "not connected";
+  }
+else
+{
+echo "connected..."."<br>";
 }
 
+mysqli_connect('localhost','root','','loop_19')or die('Could not connect to database');
+
+$p2=$_POST['school_name'];
+$p3=$_POST['play'];
+$p4=$_POST['lib'];
+$p7=$_POST['equip'];
+$p8=$_POST['teachers'];
+$p5=$_POST['activity'];
+$p6=$_POST['lab'];
+$p9=$_POST['phone_number'];
+$p10=$_POST['alternate_number'];
+$p11=$_POST['location'];
 if(isset($_POST['submit']))
 {
-
-$sql="insert into cluster values($p1,$p2,'$p3',$p4,$p5,$p6,$p7,$p8,'$p9')";
-$result=mysql_query($sql);
-echo "sucessfully registered ";
-
-}	
+$sql="insert into school_approval(school_name,playground,library,activity_room,lab,equipment,part_time_teachers,phone_number,alternate_number,location) values('$p2','$p3','$p4','$p5','$p6','$p7','$p8','$p9','$p10','$p11');";
+$result=mysqli_query($con,$sql);
+if($result)
+{
+	echo "sucessfully registered ";
 }
-
+else
+{
+	echo "Not inserted";
+}
+}
+else
+{
+	echo "Check properly";
+}
 
 ?>
