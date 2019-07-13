@@ -21,10 +21,9 @@ $p6=$_POST['lab'];
 $p9=$_POST['phone_number'];
 $p10=$_POST['alternate_number'];
 $p11=$_POST['location'];
-$p12=$_POST['password'];
 if(isset($_POST['submit']))
 {
-$sql="insert into cluster(school_name,playground,library,activity_room,lab,equipment,part_time_teachers,phone_number,alternate_number,location,password) values('$p2','$p3','$p4','$p5','$p6','$p7','$p8','$p9','$p10','$p11','$p12');";
+$sql="insert into school_approval(school_name,playground,library,activity_room,lab,equipment,part_time_teachers,phone_number,alternate_number,location) values('$p2','$p3','$p4','$p5','$p6','$p7','$p8','$p9','$p10','$p11');";
 $result=mysqli_query($con,$sql);
 if($result)
 {
