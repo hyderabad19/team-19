@@ -10,11 +10,13 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+$school_id=$_SESSION['school_id']
+$cluster_id=$conn->query("select cluster_id from cluster where schoole_id="$school_id"");
 $resource = array("playground","library","activity_room","lab","equipment","teachers");
 $date=date("Ymd");
 for($i=0;$i<count($resource);i++){
 
-$sql = "SELECT * FROM cluster innerjoin "$resource[i]" on cluster.school_id== "$resource[i]".school_id where date ="$date" ";
+$sql = "SELECT * FROM cluster innerjoin "$resource[i]" on cluster.school_id== "$resource[i]".school_id where date ="$date" and cluster_id="$cluster_id"";
 
 $result = $conn->query($sql);
 echo "<table border='1'>z";
