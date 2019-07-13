@@ -17,8 +17,10 @@ if ($conn->connect_error) {
 
 $school_id = $_REQUEST['id'];
 $date=$_REQUEST['date'];
-$slot=$_REQUEST['slot'];
+$start_time=$_REQUEST['start_time'];
+$end_time=$_REQUEST['end_time'];
+
 $resource_name=$_REQUEST['resource_name'];
-$sql = "update "$resource_name" set "$capacity"=0, where school_id="$school_id" and date="$date" and slot="$slot"";
+$sql = "update "'.$resource_name.'" set "'.$capacity.'"=0, where school_id="'.$school_id.'" and date="'.$date.'" and start_time="'.$start_time.'" and end_time="'.$end_time'"";
 $result = $conn->query($sql);
 ?>
