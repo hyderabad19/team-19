@@ -1,0 +1,63 @@
+#ns{
+	width: 350px;
+	height: 30px;
+
+}
+#cart span{
+	padding: 0px 10px;
+	color: orange;
+}	
+#nav{
+	padding:10px 150.2px;
+	
+}
+#slid{
+	width: 100%;
+	left: 0;
+	right: 0;
+	height: 500px;
+}
+.nav > li.dropdown.open {
+  position: static;
+}
+
+.nav > li.dropdown.open .dropdown-menu {
+
+  display: table;
+  border-radius: 0px;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+.dropdown-menu > li {
+  display: table-cell;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+#na ul li{
+	list-style-type: none;
+	font-style: italic;
+	font-size: 16px;
+	font-family: sans-serif;
+}
+.dropdown a{
+	font-size: 16px;
+	font-family: sans-serif;
+}
+
+
+@media screen and (max-width: 767px) {
+  #ns{
+	width: 100%;
+	margin-top: 50px;
+
+}
+ .dropdown-menu > li {
+    display: block;
+  }
+
+
