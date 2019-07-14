@@ -12,23 +12,33 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+ 
+  h2{
+	  font-family:cursive	;
+  }
+ 
+  </style>
   </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <div class="container-fluid">
-     <h2 align="center" >LOOP</h2></div>	 
+     <h2 align="center" >LOOP EDUCATION FOUNDATION</h2></div>	 
 
   </div><nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="main.html">Home</a></li>
-	  
+      <li ><a href="main.html">Home</a></li>
+	  <li class="active"><a href="admin.php">Notifications</a></li>
+	  <li ><a href="feedback.php">DashBoard</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="logout.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
 </nav>
+<div class="container">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
 <?php
 session_start( );
 $con = mysqli_connect("localhost","root","","loop_19");
@@ -36,35 +46,58 @@ $con = mysqli_connect("localhost","root","","loop_19");
 	{
 		echo "not connected";
 	}
-	else
-	{
-	echo "connected..."."<br>";
-	}
-	$result1=mysqli_query($con,"select * from school_approval");
-	while($rows=mysqli_fetch_($result1))
+	
+	$result1=mysqli_query($con,"select * from school_approval");?>
+	<table class="table table-striped">
+	<?php 
+	
+	while($rows=mysqli_fetch_assoc($result1))
 		{
+			 echo "<tr>";
+        	echo "<td>";
 			echo $rows['school_name'];
-			echo "Available Resources";
-			if($rows['playground']==1)
+			echo "</td>";
+	
+			if($rows['playground']>0){
+				echo "<td>";
 				echo "Playground";
-			if($rows['library']==1)
+				echo "</td>";
+			}
+			if($rows['library']>0){
+				echo "<td>";
 				echo "Library";
-			if($rows['activity_room']==1)
+				echo "</td>";
+			}
+			if($rows['activity_room']>0){
+				echo "<td>";
 				echo "activity_room";
-			if($rows['lab']==1)
+				echo "</td>";
+			}
+			if($rows['lab']>0){
+				echo "<td>";
 				echo "Lab";
-			if($rows['equipment']==1)
+				echo "</td>";
+			}
+			if($rows['equipment']>0){
+				echo "<td>";
 				echo "Equipments";
-			if($rows['part_time_teachers']==1)
+				echo "</td>";
+			}
+			if($rows['part_time_teachers']>0){
+				echo "<td>";
 				echo "Teachers";
-			
-echo '<form method="post">
+				echo "</td>";
+			}
+			echo "<td>";
+echo '<form method="post" align="left">
 <button type="submit"  class="btn btn-info btn-sm" name="accept_id" value="'.$rows['school_name'].'">Accept</button>
 </form>';
-			
-	echo '<form method="post">
+echo "</td>";
+			echo "<td>";
+	echo '<form method="post" align="right">
 <button type="submit"  class="btn btn-info btn-sm" name="decline_id" value="'.$rows['school_name'].'">Decline</button>
 </form>';
+echo "</td>";
 		}
 		if(isset($_POST['accept_id']))
 		{
@@ -84,3 +117,6 @@ echo '<form method="post">
 			mysqli_fetch_assoc($result2);*/
 		}
   ?>
+    </body>
+</html>
+ 
