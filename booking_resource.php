@@ -11,7 +11,7 @@ if(isset( $_POST['submit'])){
 
 // retrieve the form data by using the element's name attributes value as key
 
-$resource = $_REQUEST['resources'];
+$resource = $_REQUEST['resource_name'];
 echo "hii";
 echo $resource;
 	$date = $_REQUEST['date'];
