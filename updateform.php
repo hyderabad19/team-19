@@ -27,11 +27,11 @@ $en_tim="0";
 $en_tim.=$var;
 $en_tim.=":00:00";
 
-$sql="INSERT INTO $resource (`school_id`,`date`,`start_time`,`end_time`,`capacity`,`resource_name`) values ('$schoool_id','$date','$st_tim','$en_tim','
+$sql="INSERT INTO `$resource` (`school_id`,`date`,`start_time`,`end_time`,`capacity`,`resource_name`) values ('$school_id','$date','$st_tim','$en_tim','
 $capacity','$resource');";
 $conn->query($sql);
 }
-$sql = "update cluster set "'.$resource.'"="'.$capacity.'", where school_id='$school_id';" 
+$sql = "update cluster set "'.$resource.'"='$capacity', where school_id='$school_id';"; 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
