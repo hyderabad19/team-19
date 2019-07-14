@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-	$con = mysqli_connect("localhost","root","","feedback");
+	$con = mysqli_connect("localhost","root","","loop_19");
 	if(!$con)
 	{
 		echo "not connected";
@@ -36,7 +36,7 @@ error_reporting(0);
             while ($row = mysqli_fetch_assoc($result1) )
             { ?>
                                 <tr>
-                                    <td><a href="feedlist.php?school_id=<?php echo $row["school_id"]?>"><?php echo $row["school_id"]?><a></td>
+                                    <td><a href="feedbacklist.php?school_id=<?php echo $row["school_id"]?>"><?php echo $row["school_id"]?><a></td>
                                     <td><?php echo $row["rating"]?></td>
                                 </tr>
                             </body>
