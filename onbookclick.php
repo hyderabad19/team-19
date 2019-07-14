@@ -1,7 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loop Homepagw</title>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="home.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+ 
+  h2{
+	  font-family:cursive	;
+  }
+ 
+  </style>
+  </head>
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<div class="container-fluid">
+     <h2 align="center">LOOP EDUCATION FOUNDATION</h2></div>
+	 
+	 
+	 
+
+  </div><nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li ><a href="main.html">Home</a></li>
+	   <li class="active"><a href="onbookclick.php">Bookings</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     
+      <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
 <?php
 session_start();
 $school_id=$_SESSION['school_id'];
 ?>
+<div class="container">
+ 
 <form action="booking_resource.php"method="POST">
   <select name="resource_name">
     <option value="playground_db">playground</option>
@@ -11,12 +54,13 @@ $school_id=$_SESSION['school_id'];
     <option value="equipment_db">equipment</option>
     <option value="part_time_teachers_db">part_time_teachers</option>
   </select>
+  
   <br><br>
   <input type="date"name="date">date
-  <input type="submit" name="submit">
+  <input type="submit" name="submit" value="submit">
 </form>
 <form action="updateform.php"method="POST">
-<select name="resources_name">
+<select name="resource_name">
     <option value="playground_db">playground</option>
     <option value="library_db">library</option>
     <option value="activity_room_db">activity_room</option>
@@ -26,11 +70,9 @@ $school_id=$_SESSION['school_id'];
   </select>
   <br><br>
   <input type="number"name="capacity">capacity
-<input type="submit" name="Add_Resources">
+<input type="submit" name="Add_Resources" value="Add resources">
 </form>
-<a href='dashschedule.html'>DashBoard</a>
 <?php
-
 $con = mysqli_connect("localhost","root","","loop_19");
 	if(!$con)
 	{
@@ -43,9 +85,7 @@ for($i=0;$i<count($resource);$i++)
 {
 $sql="SELECT * FROM cluster inner join ".$resource[$i]." on cluster.school_id= ".$resource[$i].".school_id where date ='$date' and cluster_id=0;";
 $result = mysqli_query($con,$sql);
-
-echo "<table border='1'>";
-
+?><table class="table table-striped" ><?php
 if (mysqli_num_rows($result)>0) 
 {
     // output data of each row
@@ -65,7 +105,5 @@ if (mysqli_num_rows($result)>0)
 		}
 	}
 } 
-
-
 }
 ?>
