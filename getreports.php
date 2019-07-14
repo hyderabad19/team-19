@@ -5,13 +5,11 @@ $school_id=$_SESSION['school_id'];
 */
 $resource = array("playground_db","library_db","activity_room_db","lab_db","equipment_db","part_time_teachers_db");
 for($i=0;$i<count($resource);$i++){
-	/*
 	sql=select count(*) from "'.$resource[$i].'" where school_id="school_id";
 	sql1=select count(*) from "'.$resource[$i].'" where school_id="school_id" and capacity == 0;
 	$result = mysqli_query($con,$sql);
 	$result1 = mysqli_query($con,$sql1);
 	$result=$result-$result1;
-	*/
 	$result=10
 	$result=11
 echo "<html>
