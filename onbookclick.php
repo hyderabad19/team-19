@@ -28,6 +28,7 @@ $school_id=$_SESSION['school_id'];
   <input type="number"name="capacity">capacity
 <input type="submit" name="Add_Resources">
 </form>
+<a href='dashschedule.html'>DashBoard</a>
 <?php
 
 $con = mysqli_connect("localhost","root","","loop_19");
