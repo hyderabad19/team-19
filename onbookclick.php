@@ -16,7 +16,7 @@ $school_id=$_SESSION['school_id'];
   <input type="submit" name="submit">
 </form>
 <form action="updateform.php"method="POST">
-<select name="resources_name">
+<select name="resource_name">
     <option value="playground_db">playground</option>
     <option value="library_db">library</option>
     <option value="activity_room_db">activity_room</option>
