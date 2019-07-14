@@ -72,8 +72,8 @@ echo '<form method="post">
 			$i1=$_POST['accept_id'];
 		$result1=mysqli_query($con,"select * from school_approval where school_id='$i1'");
 		$row=mysqli_fetch_assoc($result1);
-		$result3=mysqli_query($con,"insert into cluster values('$row['school_id']','$row['school_name']','$row['playground']','$row['library']'
-		'$row['school_id']','$row['activity_room']','$row['lab']','$row['equipment']',$row['phone number'],$row['alternate_number']";
+		$result3=mysqli_query($con,"insert into cluster values('$row["school_id"]','$row["school_name"]',$row["playground"],$row['library'],
+		$row['activity_room'],$row['lab'],$row['equipment'],$row['phone_number'],$row['alternate_number']") 	;
 		
 		
 		$result5=mysqli_query($con,"delete from school_approval where school_id='$i1'");
