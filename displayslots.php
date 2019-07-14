@@ -1,4 +1,5 @@
-<?
+<?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,10 +11,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $school_id=$_SESSION['school_id'];
-$cluster_id=$conn->query("select cluster_id from cluster where school_id="'.$school_id.'"");
-$resource = array("playground","library","activity_room","lab","equipment","teachers");
+$cluster_id=$conn->query("select cluster_id from cluster where school_id='$school_id'");
+$resource = array("playground_db","library_db","activity_room_db","lab_db","equipment_db","teachers_db");
 $date=$_REQUEST['date'];
-for($i=0;$i<count($resource);i++){
+for($i=0;$i<count($resource);$i++){
 
 $sql = "SELECT * FROM cluster innerjoin "'.$resource[i].'" on cluster.school_id== "'.$resource[i].'".school_id where date ="'.$date.'" and cluster_id="'.$cluster_id.'"";
 
@@ -30,7 +31,7 @@ if ($result->num_rows > 0) {
         echo "<td>".$row['end_time']."</td>";
 		echo "<td>".$row['capacity']."</td>";
 		echo "<td>".$row['resource_name']."</td>";
-		echo "<td><a href='update.php?id=".$row['school_id']."&date=".$date."&start_time=".$row["start_time"]."&end_time=".$row["end_time"]."'>submit</a></td>";
+		echo "<td><a href='update.php?id=".$row['school_id']."&date=".$date."&start_time=".$row["start_time"]."&end_time=".$row["end_time"]."&resource_name=".$row["resource_name"]."'>submit</a></td>";
 		</tr>    
     }}
 } else {
