@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,8 +11,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $resource = $_REQUEST['resource_name'];
-$capacity=$_REQUEST['capacity_in_numbers'];
-$school_id=$_REQUEST['school_id'];
+$capacity=$_REQUEST['capacity'];
+$school_id=$_SESSION['school_id'];
 $date=date("Y-m-d");
 echo $resource;
 $x=9;
